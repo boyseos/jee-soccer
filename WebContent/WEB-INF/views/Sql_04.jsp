@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Sql02</title>
+<title>Sql04</title>
 <script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-포지션은${sql01.position} ${sql02.position} ${sql03.position} ${sql04.position} ${sql05.position}입니다.
+해당 ID가 ${sql01.teamId} 팀의 포지션 ${sql01.position} 선수이름은 ${sql01.playerName}입니다.
 </body>
 </html>

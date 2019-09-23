@@ -8,7 +8,7 @@ import lombok.Data;
 public class PlayerBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+
 	private String playerId, playerName, teamId
 			, ePlayerName,nickName,joinYyyy,position
 			, backNo, nation, brithDate, solar, height, weight;
