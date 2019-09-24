@@ -12,7 +12,6 @@ public class Command implements Order{
 	protected HttpServletRequest request;
 	
 	public void execute() {
-		
 		setDomain();
 		setPage();
 		setView(page);

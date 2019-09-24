@@ -15,39 +15,35 @@ public class SqlCommand extends MoveCommand{
 	public void execute() {
 		super.execute();
 		PlayerBean p = PlayerServiceImpl
-				.getInstance().setPlayer(request);
+				.getInstance().setPlayer(request);//cmd.request가 서비스까지 가도 되는가.
 		int i = 1;
-		switch (page.replace("Sql_","")) { //cmd.request가 서비스까지 가도 되는가.
+		switch (page.replace("Sql_","")) { //팩토리 형태로 만들기엔 30개를 일일이 클래스파일을 만들..어야하나..
 		case "02":
 			for (PlayerBean px : PlayerServiceImpl.getInstance()
 					.findPositions()) {
-				System.out.println("SqlCommand : "+px);
-				Receiver.cmd.request.setAttribute
-				(String.format("sql%02d",i ),px);
+				PlayerServiceImpl.getInstance()
+				.setPlayerAttribute(px, i);
 				i++;
 			}
 			break;
 		case "04":
 			for (PlayerBean px : PlayerServiceImpl.getInstance()
 					.findTeamPositions(p)) {
-				System.out.println("SqlCommand : "+px);
-				Receiver.cmd.request.setAttribute
-				(String.format("sql%02d",i ),px);
+				PlayerServiceImpl.getInstance()
+				.setPlayerAttribute(px, i);
 				i++;
 			}
 			break;
 		case "05":
 			for (PlayerBean px : PlayerServiceImpl.getInstance()
 					.findTeamHeightName(p)) {
-				System.out.println("SqlCommand : "+px);
-				Receiver.cmd.request.setAttribute
-				(String.format("sql%02d",i ),px);
+				PlayerServiceImpl.getInstance()
+				.setPlayerAttribute(px, i);
 				i++;
 			}
 			break;
 		default:
 			break;
-		
 		}
 	}
 }

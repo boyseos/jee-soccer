@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.soccer.web.commands.Receiver;
 import com.soccer.web.daoimpls.PlayerDaoImpl;
 import com.soccer.web.domains.PlayerBean;
 import com.soccer.web.services.PlayerService;
@@ -31,6 +32,12 @@ public class PlayerServiceImpl implements PlayerService{
 		return PlayerDaoImpl.getInstance().selectTeamHeightName(param);
 	}
 	
+	public void setPlayerAttribute(PlayerBean px, int i) {
+		System.out.println("SqlCommand : "+ px);
+		Receiver.cmd.getRequest().setAttribute // 플레이어쪽에서 컨트롤러쪽의 정보를 가지고왔다. 상관없겠지?
+		(String.format("sql%02dPlayer",i ),px);
+	}
+	
 	@Override
 	public PlayerBean setPlayer(HttpServletRequest request) {
 		PlayerBean p  = new PlayerBean();
@@ -48,5 +55,5 @@ public class PlayerServiceImpl implements PlayerService{
 		p.setTeamId(request.getParameter("teamId"));
 		p.setWeight(request.getParameter("weight"));
 		return p;
-	}	
+	}
 }

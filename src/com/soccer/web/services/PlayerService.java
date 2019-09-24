@@ -19,4 +19,5 @@ public interface PlayerService {
 	// 4. 팀아이디와 포지션맞는 선수찾기
 	public List<PlayerBean> findTeamPositions(PlayerBean param);
 	public List<PlayerBean> findTeamHeightName(PlayerBean param);
+	public void setPlayerAttribute(PlayerBean px, int i);
 }
