@@ -1,32 +1,19 @@
 package com.soccer.web.daoimpls;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.soccer.web.daos.PlayerDao;
 import com.soccer.web.domains.PlayerBean;
+import com.soccer.web.factory.DatabaseFactory;
 import com.soccer.web.pools.Constants;
 import com.soccer.web.pools.SqlList;
 
 public class PlayerDaoImpl implements PlayerDao{
-	private static Connection conn;
 	private static PlayerDaoImpl instance = new PlayerDaoImpl();
-	
-	public static PlayerDaoImpl getInstance() {
-		try {
-			Class.forName(Constants.DRIVER);
-			conn = DriverManager.getConnection(Constants.URL
-					, Constants.USERNAME, Constants.PASSWORD);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return instance;
-	}
+	public static PlayerDaoImpl getInstance() {return instance;}
 	private PlayerDaoImpl() {}
 	
 	@Override
@@ -36,8 +23,10 @@ public class PlayerDaoImpl implements PlayerDao{
 		String result = "";
 		System.out.println("만세");
 		try {
-			PreparedStatement stmt =  conn.prepareStatement(SqlList.SqlQuestion02);
-			ResultSet rs = stmt.executeQuery();
+			ResultSet rs = DatabaseFactory
+					.createDatabase("oracle")
+					.getConnection()
+					.prepareStatement(SqlList.SqlQuestion02).executeQuery();
 			while(rs.next()) {
 				p = new PlayerBean();
 				p.setPosition(rs.getString("POSITION"));				
@@ -59,10 +48,11 @@ public class PlayerDaoImpl implements PlayerDao{
 		String result = "";
 		System.out.println("만세");
 		try {
-			PreparedStatement stmt = conn.prepareStatement(String
-					.format(SqlList.SqlQuestion04
-							, param.getTeamId(),param.getPosition()));
-			ResultSet rs = stmt.executeQuery();
+			ResultSet rs = DatabaseFactory
+					.createDatabase("oracle")
+					.getConnection()
+					.prepareStatement(String.format(SqlList.SqlQuestion04
+							,param.getTeamId(),param.getPosition())).executeQuery();
 			while(rs.next()) {
 				p = new PlayerBean();
 				p.setPosition(rs.getString("POSITION"));
@@ -87,11 +77,13 @@ public class PlayerDaoImpl implements PlayerDao{
 		String result = "";
 		System.out.println("만세");
 		try {
-			PreparedStatement stmt = conn.prepareStatement(String
-					.format(SqlList.SqlQuestion05
+			ResultSet rs = DatabaseFactory
+					.createDatabase("oracle")
+					.getConnection()
+					.prepareStatement(String
+							.format(SqlList.SqlQuestion05
 							,param.getTeamId(),param.getHeight()
-							,param.getPlayerName()));
-			ResultSet rs = stmt.executeQuery();
+							,param.getPlayerName())).executeQuery();
 			while(rs.next()) {
 				p = new PlayerBean();
 				p.setTeamId(rs.getString("TEAM_ID"));

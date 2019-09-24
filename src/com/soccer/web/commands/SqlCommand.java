@@ -21,21 +21,27 @@ public class SqlCommand extends MoveCommand{
 		case "02":
 			for (PlayerBean px : PlayerServiceImpl.getInstance()
 					.findPositions()) {
-				tempSql(px, i);
+				System.out.println("SqlCommand : "+px);
+				Receiver.cmd.request.setAttribute
+				(String.format("sql%02d",i ),px);
 				i++;
 			}
 			break;
 		case "04":
 			for (PlayerBean px : PlayerServiceImpl.getInstance()
 					.findTeamPositions(p)) {
-				tempSql(px, i);
+				System.out.println("SqlCommand : "+px);
+				Receiver.cmd.request.setAttribute
+				(String.format("sql%02d",i ),px);
 				i++;
 			}
 			break;
 		case "05":
 			for (PlayerBean px : PlayerServiceImpl.getInstance()
 					.findTeamHeightName(p)) {
-				tempSql(px, i);
+				System.out.println("SqlCommand : "+px);
+				Receiver.cmd.request.setAttribute
+				(String.format("sql%02d",i ),px);
 				i++;
 			}
 			break;
@@ -43,11 +49,5 @@ public class SqlCommand extends MoveCommand{
 			break;
 		
 		}
-	}
-	
-	public void tempSql(PlayerBean px,int i) {//임시처리. 메소드자체를 변수처리 또는 메소드이름 통일후 파라미터값 추가하거나 해야지 해결할듯.
-		System.out.println("SqlCommand : "+px);
-		Receiver.cmd.request.setAttribute
-		(String.format("sql%02d",i ),px);
 	}
 }

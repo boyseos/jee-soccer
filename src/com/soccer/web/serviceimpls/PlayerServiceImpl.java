@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.soccer.web.commands.Receiver;
 import com.soccer.web.daoimpls.PlayerDaoImpl;
 import com.soccer.web.domains.PlayerBean;
 import com.soccer.web.services.PlayerService;
