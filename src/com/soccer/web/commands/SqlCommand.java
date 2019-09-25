@@ -15,9 +15,9 @@ public class SqlCommand extends MoveCommand{
 	public void execute() {
 		super.execute();
 		PlayerBean p = PlayerServiceImpl
-				.getInstance().setPlayer(request);//cmd.request가 서비스까지 가도 되는가.
+				.getInstance().setPlayer(request);
 		int i = 1;
-		switch (page.replace("Sql_","")) { //팩토리 형태로 만들기엔 30개를 일일이 클래스파일을 만들..어야하나..
+		switch (page.replace("Sql_","")) {
 		case "02":
 			for (PlayerBean px : PlayerServiceImpl.getInstance()
 					.findPositions()) {

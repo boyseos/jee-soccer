@@ -18,7 +18,11 @@ public class SqlList {
 					"WHERE P.TEAM_ID LIKE '%s'\r\n" + 
 					"    AND P.HEIGHT >= %s\r\n" + 
 					"    AND P.PLAYER_NAME LIKE '%s'\r\n" + 
-					"ORDER BY 1";
+					"ORDER BY 1"
+			,findPlayerIdSolar = "SELECT *\n" + 
+					"FROM PLAYER\n" + 
+					"WHERE PLAYER_ID LIKE '%s'\n" + 
+					"	AND SOLAR LIKE '%s'\n";
 			
 			
 }

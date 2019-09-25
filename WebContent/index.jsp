@@ -1,27 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Sql</title>
-<script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<title>로그인</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<div>
-	<h2>Sql 보기</h2>
-	<form id="form" action="<%=request.getContextPath()%>/player.do">
-	문제번호 : <input type="number" name="page">
-	<input type="submit" value="보내자" >
-	<input type="hidden" name="action" value="sql">
-	팀아이디<input type="text" name="teamId" >
-	포지션<input type="text" name="position" >
-	선수키<input type="text" name="height" >
-	선수이름<input type="text" name="playerName" >
-	</form>
+<div id="wrapper" style="width: 100%;height: 100%" >
+	<form id="login_form" action="<%=request.getContextPath()%>/player.do">
+		<table border = "1" style="width : 500px;height : 200px; margin : 100px auto ">
+			<tr>
+				<td style="width : 300px">
+					ID : <input type="text" name="playerId"/>
+				</td>
+				<td rowspan="2">
+					<input type="submit" value="로그인전송" />
+					<input type="hidden" name="page" value="home" />		
+				</td>
+			</tr>
+			<tr>
+				<td>
+					PW : <input type="text" name="solar"/>
+				</td>
+			</tr>
+		</table>
+	</form>	
+	<h3 style="width : 300px; margin : 0 auto">
+	<a id="a_join" href="#">회원가입</a> </h3>
 </div>
 <script>
-$('#form').submit(function(){
+$('#a_join').click(function(){
+	location.assign('<%=request.getContextPath()%>/player.do?page=join');
+	alert('join');
+});
+$('#login_form').submit(function(){
+	alert('login');
 });
 </script>
 </body>

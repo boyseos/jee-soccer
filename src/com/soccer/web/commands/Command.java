@@ -1,33 +1,33 @@
 package com.soccer.web.commands;
 
 import javax.servlet.http.HttpServletRequest;
-import lombok.Data;
 
 import com.soccer.web.pools.Constants;
 
+import lombok.Data;
 @Data
 public class Command implements Order{
-	
-	protected String domain, page, view, action;
+	protected String action, page, view, domain;
 	protected HttpServletRequest request;
 	
+	@Override
 	public void execute() {
-		setDomain();
 		setPage();
+		setDomain();
 		setView(page);
 	}
 
-	public void setDomain() {
-		domain = request.getServletPath().replace(".do", "").substring(1);
+	 public void setPage() {
+		 page = request.getParameter("page"); 
 	}
-
-	public void setPage() {
-		page = 	String.format("Sql_%02d",
-					Integer.parseInt((request.getParameter("page") != "")
-					? request.getParameter("page") : "1")); 		
+	 
+	 public void setDomain() {
+		 domain = request.getServletPath()
+		 .replace(".do","").substring(1); 
 	}
-	
-	public void setView(String page) {
-		view = String.format(Constants.VIEW_PATH, page);
-	}
+	  
+	  public void setView(String page) { view = (page.equals("home")) ? String.format
+	  (Constants.VIEW_PATH+".jsp",page) : String.format(Constants
+	  .VIEW_PATH+"/%s.jsp",domain,page); }
+	 
 }

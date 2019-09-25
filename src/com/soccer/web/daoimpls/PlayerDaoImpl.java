@@ -1,6 +1,5 @@
 package com.soccer.web.daoimpls;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 import com.soccer.web.daos.PlayerDao;
 import com.soccer.web.domains.PlayerBean;
 import com.soccer.web.factory.DatabaseFactory;
-import com.soccer.web.pools.Constants;
 import com.soccer.web.pools.SqlList;
 
 public class PlayerDaoImpl implements PlayerDao{
@@ -98,5 +96,30 @@ public class PlayerDaoImpl implements PlayerDao{
 		}
 		System.out.println("db 값 = "+ result);
 		return list;
+	}
+	
+	@Override
+	public PlayerBean selectPlayerIdSolar(PlayerBean param) {
+		PlayerBean p = null;
+		String result = "";
+		System.out.println("만세");
+		try {
+			ResultSet rs = DatabaseFactory
+					.createDatabase("oracle")
+					.getConnection()
+					.prepareStatement(String
+							.format(SqlList.findPlayerIdSolar
+							,param.getPlayerId(),param.getSolar()
+							)).executeQuery();
+			p = new PlayerBean();
+			p.setPlayerId(rs.getString("PLAYER_ID"));
+			p.setHeight(rs.getString("SOLAR"));
+			result += String.format("%s\n", p);
+		}
+	    catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("db 값 = "+ result);
+		return p;
 	}
 }

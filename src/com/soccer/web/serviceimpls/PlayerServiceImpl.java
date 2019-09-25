@@ -38,6 +38,10 @@ public class PlayerServiceImpl implements PlayerService{
 		(String.format("sql%02dPlayer",i ),px);
 	}
 	
+	public PlayerBean findPlayerIdSolar(PlayerBean param) {
+		return PlayerDaoImpl.getInstance().selectPlayerIdSolar(param);
+	}
+	
 	@Override
 	public PlayerBean setPlayer(HttpServletRequest request) {
 		PlayerBean p  = new PlayerBean();
