@@ -14,15 +14,16 @@ public class LoginCommand extends MoveCommand{
 	@Override
 	public void execute() {
 		super.execute();
-		PlayerBean p = new PlayerBean();
-		p.setPlayerId(request.getParameter("playerId"));
-		p.setSolar(request.getParameter("solar"));
-		if(null == PlayerServiceImpl
-				.getInstance().findPlayerIdSolar(p).getPlayerId()) {
+		PlayerBean p = PlayerServiceImpl
+				.getInstance().setPlayer(request);
+		p = PlayerServiceImpl
+				.getInstance().findPlayerIdSolar(p);
+		if(null ==  p.getPlayerId()){
 			System.out.println("로그인 실패");
 			setView("index");
-		}else {
+		}else {			
 			System.out.println("로그인 성공");
+			request.setAttribute("player",p);
 		}
 		
 	}

@@ -32,10 +32,10 @@ public class PlayerServiceImpl implements PlayerService{
 		return PlayerDaoImpl.getInstance().selectTeamHeightName(param);
 	}
 	
-	public void setPlayerAttribute(PlayerBean px, int i) {
-		System.out.println("SqlCommand : "+ px);
+	public void setPlayerAttribute(PlayerBean player, int i) {
+		System.out.println("SqlCommand : "+ player);
 		Receiver.cmd.getRequest().setAttribute // 플레이어쪽에서 컨트롤러쪽의 정보를 가지고왔다. 상관없겠지?
-		(String.format("sql%02dPlayer",i ),px);
+		(String.format("sql%02dPlayer",i ),player);
 	}
 	
 	public PlayerBean findPlayerIdSolar(PlayerBean param) {

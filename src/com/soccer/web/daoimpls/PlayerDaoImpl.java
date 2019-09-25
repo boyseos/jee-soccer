@@ -115,6 +115,7 @@ public class PlayerDaoImpl implements PlayerDao{
 			while(rs.next()) {
 				p.setPlayerId(rs.getString("PLAYER_ID"));
 				p.setSolar(rs.getString("SOLAR"));
+				p.setPlayerName(rs.getString("PLAYER_NAME"));
 				result += String.format("%s\n", p);
 			}
 		}

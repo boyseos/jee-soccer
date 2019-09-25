@@ -8,10 +8,8 @@ public class Commander {
 	public static Command direct(HttpServletRequest request) {
 
 		Command cmd = null;
-		System.out.println(request.getParameter("action"));
-		switch (Actions.valueOf((request.getParameter("action") 
-				!= null) ? 
-					request.getParameter("action").toUpperCase()
+		switch (Actions.valueOf((request.getParameter("action")!= null)
+				? request.getParameter("action").toUpperCase()
 					: "MOVE")) {
 		case SEARCH:
 			cmd = new SearchCommand();

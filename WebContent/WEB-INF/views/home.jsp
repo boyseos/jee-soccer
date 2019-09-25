@@ -9,7 +9,7 @@
 </head>
 <body>
 <div>
-	<h2>Sql 보기</h2>
+	<h2>${player.playerName} 선수</h2>
 	<form id="form" action="<%=request.getContextPath()%>/player.do">
 	문제번호 : <input type="number" name="page">
 	<input type="submit" value="보내자" >

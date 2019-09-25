@@ -26,10 +26,20 @@ public class Command implements Order{
 		 .replace(".do","").substring(1); 
 	}
 	  
-	  public void setView(String page) { 
-		  view = (page.equals("home")) ? String
-				  .format(Constants.VIEW_PATH+".jsp",page) 
-				  : String.format(
-						  Constants.VIEW_PATH+"/%s.jsp",domain,page); 
+	  public void setView(String page) {
+		  this.page = page;
+		  switch (page) {
+		  case "home":
+			  view = String.format(Constants
+					  .VIEW_PATH+".jsp",page);
+			  break;
+		  case "index":
+			  view = "index.jsp"; 
+			  break;
+		  default:
+			  view = String.format(Constants
+					  .VIEW_PATH+"/%s.jsp",domain,page);
+			  break;
+		}
 	}
 }
