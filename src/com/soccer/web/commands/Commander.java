@@ -19,7 +19,7 @@ public class Commander {
 		case JOIN:
 			cmd = new JoinCommand(request);
 			break;
-		case HOME:
+		case LOGIN:
 			cmd = new LoginCommand(request);
 			break;
 		default:

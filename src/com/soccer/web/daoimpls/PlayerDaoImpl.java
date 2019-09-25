@@ -112,9 +112,11 @@ public class PlayerDaoImpl implements PlayerDao{
 							,param.getPlayerId(),param.getSolar()
 							)).executeQuery();
 			p = new PlayerBean();
-			p.setPlayerId(rs.getString("PLAYER_ID"));
-			p.setHeight(rs.getString("SOLAR"));
-			result += String.format("%s\n", p);
+			while(rs.next()) {
+				p.setPlayerId(rs.getString("PLAYER_ID"));
+				p.setSolar(rs.getString("SOLAR"));
+				result += String.format("%s\n", p);
+			}
 		}
 	    catch (Exception e) {
 			e.printStackTrace();

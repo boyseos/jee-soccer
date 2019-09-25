@@ -18,7 +18,8 @@
 				</td>
 				<td rowspan="2">
 					<input type="submit" value="로그인전송" />
-					<input type="hidden" name="page" value="home" />		
+					<input type="hidden" name="page" value="home" />	
+					<input type="hidden" name="action" value="login" />	
 				</td>
 			</tr>
 			<tr>

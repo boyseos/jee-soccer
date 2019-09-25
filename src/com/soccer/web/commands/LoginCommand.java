@@ -18,8 +18,9 @@ public class LoginCommand extends MoveCommand{
 		p.setPlayerId(request.getParameter("playerId"));
 		p.setSolar(request.getParameter("solar"));
 		if(null == PlayerServiceImpl
-				.getInstance().findPlayerIdSolar(p)) {
+				.getInstance().findPlayerIdSolar(p).getPlayerId()) {
 			System.out.println("로그인 실패");
+			setView("index");
 		}else {
 			System.out.println("로그인 성공");
 		}
