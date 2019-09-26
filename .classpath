@@ -14,8 +14,8 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/ojdbc8.jar"/>
-	<classpathentry exported="true" kind="lib" path="E:/Study/Java/jstl.jar"/>
-	<classpathentry exported="true" kind="lib" path="E:/Study/Java/lombok.jar"/>
-	<classpathentry exported="true" kind="lib" path="E:/Study/Java/ojdbc8.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/user/eclipse-jee/jstl.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/user/eclipse-jee/lombok.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/user/eclipse-jee/standard.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

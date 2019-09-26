@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soccer.web.commands.Receiver;
 import com.soccer.web.commands.Sender;
+import com.soccer.web.domains.PlayerBean;
 
 @WebServlet("/player.do")
 public class PlayerController extends HttpServlet {
@@ -20,4 +21,6 @@ public class PlayerController extends HttpServlet {
 		Receiver.cmd.execute();
 		Sender.forward(response);
 	}
+	
+	
 }

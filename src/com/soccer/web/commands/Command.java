@@ -31,14 +31,18 @@ public class Command implements Order{
 		  switch (page) {
 		  case "home":
 			  view = String.format(Constants
-					  .VIEW_PATH+".jsp",page);
+					  .SINGLE_PATH,page);
+			  break;
+		  case "fail":
+			  view = String.format(Constants
+					  .SINGLE_PATH,page);
 			  break;
 		  case "index":
 			  view = "index.jsp"; 
 			  break;
 		  default:
 			  view = String.format(Constants
-					  .VIEW_PATH+"/%s.jsp",domain,page);
+					  .DOUBLE_PATH,domain,page);
 			  break;
 		}
 	}

@@ -7,8 +7,6 @@ ORDER BY T.TEAM_NAME
 --2.포지션 종류(중복제거 없으면 빈공간)
 SELECT *
 FROM PLAYER
-WHERE PLAYER_ID LIKE '%s'
-	AND SOLAR LIKE '%s'
 ORDER BY 1 DESC
 ;
 
