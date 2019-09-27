@@ -60,4 +60,9 @@ public class PlayerServiceImpl implements PlayerService{
 		p.setWeight(request.getParameter("weight"));
 		return p;
 	}
+	
+	public PlayerBean selectPlayer() {
+		
+		return null;
+	}
 }

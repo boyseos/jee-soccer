@@ -11,7 +11,9 @@ public interface PlayerService {
 	public List<PlayerBean> findPositions();
 	public List<PlayerBean> findTeamPositions(PlayerBean param);
 	public List<PlayerBean> findTeamHeightName(PlayerBean param);
+	//public List<PlayerBean> find
 	public PlayerBean findPlayerIdSolar(PlayerBean param);
 	public PlayerBean setPlayer(HttpServletRequest request);
+	
 	public void setPlayerAttribute(PlayerBean player, int i);
 }

@@ -29,9 +29,18 @@ public class Command implements Order{
 	  public void setView(String page) {
 		  this.page = page;
 		  switch (page) {
+		  
+		  case "login":
+			  view = String.format(Constants
+					  .FACADE_PATH, page);
+			  break;
 		  case "home":
 			  view = String.format(Constants
-					  .SINGLE_PATH,page);
+					  .FACADE_PATH, page);
+			  break;
+		  case "join":
+			  view = String.format(Constants
+					  .FACADE_PATH, page);
 			  break;
 		  case "fail":
 			  view = String.format(Constants

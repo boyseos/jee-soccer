@@ -1,5 +1,6 @@
 package com.soccer.web.daoimpls;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,8 @@ public class PlayerDaoImpl implements PlayerDao{
 			ResultSet rs = DatabaseFactory
 					.createDatabase("oracle")
 					.getConnection()
-					.prepareStatement(SqlList.SqlQuestion02).executeQuery();
+					.prepareStatement(SqlList.SqlQuestion02)
+					.executeQuery();
 			while(rs.next()) {
 				p = new PlayerBean();
 				p.setPosition(rs.getString("POSITION"));				
@@ -46,11 +48,13 @@ public class PlayerDaoImpl implements PlayerDao{
 		String result = "";
 		System.out.println("만세");
 		try {
-			ResultSet rs = DatabaseFactory
+			PreparedStatement stmt = DatabaseFactory
 					.createDatabase("oracle")
 					.getConnection()
-					.prepareStatement(String.format(SqlList.SqlQuestion04
-							,param.getTeamId(),param.getPosition())).executeQuery();
+					.prepareStatement(SqlList.SqlQuestion04);
+			stmt.setString(1, param.getTeamId());
+			stmt.setString(2, param.getPosition());
+			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				p = new PlayerBean();
 				p.setPosition(rs.getString("POSITION"));
@@ -75,13 +79,14 @@ public class PlayerDaoImpl implements PlayerDao{
 		String result = "";
 		System.out.println("만세");
 		try {
-			ResultSet rs = DatabaseFactory
+			PreparedStatement stmt = DatabaseFactory
 					.createDatabase("oracle")
 					.getConnection()
-					.prepareStatement(String
-							.format(SqlList.SqlQuestion05
-							,param.getTeamId(),param.getHeight()
-							,param.getPlayerName())).executeQuery();
+					.prepareStatement(SqlList.SqlQuestion05);
+			stmt.setString(1, param.getTeamId());
+			stmt.setString(2, param.getHeight());
+			stmt.setString(3, param.getPlayerName());
+			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				p = new PlayerBean();
 				p.setTeamId(rs.getString("TEAM_ID"));
@@ -100,22 +105,33 @@ public class PlayerDaoImpl implements PlayerDao{
 	
 	@Override
 	public PlayerBean selectPlayerIdSolar(PlayerBean param) {
-		PlayerBean p = null;
+		PlayerBean p = new PlayerBean();
 		String result = "";
 		System.out.println("만세");
-		try {
-			ResultSet rs = DatabaseFactory
+		try {		
+			PreparedStatement stmt = DatabaseFactory
 					.createDatabase("oracle")
 					.getConnection()
-					.prepareStatement(String
-							.format(SqlList.findPlayerIdSolar
-							,param.getPlayerId(),param.getSolar()
-							)).executeQuery();
-			p = new PlayerBean();
+					.prepareStatement(SqlList
+					.findPlayerIdSolar);
+			stmt.setString(1, param.getPlayerId());
+			stmt.setString(2, param.getSolar());
+			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
+				p = new PlayerBean();
 				p.setPlayerId(rs.getString("PLAYER_ID"));
 				p.setSolar(rs.getString("SOLAR"));
 				p.setPlayerName(rs.getString("PLAYER_NAME"));
+				p.setBackNo(rs.getString("BACK_NO"));
+				p.setBrithDate(rs.getString("BIRTH_DATE"));
+				p.setEPlayerName(rs.getString("E_PLAYER_NAME"));
+				p.setHeight(rs.getString("HEIGHT"));
+				p.setJoinYyyy(rs.getString("JOIN_YYYY"));
+				p.setNation(rs.getString("NATION"));
+				p.setNickName(rs.getString("NICKNAME"));
+				p.setPosition(rs.getString("POSITION"));
+				p.setTeamId(rs.getString("TEAM_ID"));
+				p.setWeight(rs.getString("WEIGHT"));
 				result += String.format("%s\n", p);
 			}
 		}

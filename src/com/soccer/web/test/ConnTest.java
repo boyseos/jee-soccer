@@ -1,46 +1,34 @@
 package com.soccer.web.test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.soccer.web.domains.PlayerBean;
+import com.soccer.web.factory.DatabaseFactory;
 
 public class ConnTest {
 	public static void main(String[] args) {
-		List<PlayerBean> list = new ArrayList<>();
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
 		PlayerBean p = null;
-		String url = "jdbc:oracle:thin:@localhost:1521:xe"
-				, userName = "c##admin"
-				, passWord = "1234";
+
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-			conn = DriverManager.getConnection(url, userName, passWord);
-			if(conn != null) {
-				System.out.println("만세");
-				stmt = conn.createStatement();
-				rs = stmt.executeQuery("SELECT DISTINCT P.POSITION 포지션\r\n" + 
-						"FROM PLAYER P\r\n" + 
-						"ORDER BY 1 DESC");
-				String result = "";
-				while(rs.next()) {
-					p = new PlayerBean();
-					p.setPosition(rs.getString("포지션"));
-					list.add(p);
-					result += String.format("%s\n", p);
-				}
-				System.out.println(result);
-			} else {
-				System.out.println("망");
+			PreparedStatement stmt = DatabaseFactory
+					.createDatabase("oracle")
+					.getConnection()
+					.prepareStatement(
+					"SELECT *\n" + 
+					"FROM PLAYER\n" + 
+					"ORDER BY 1 DESC\n");
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				p = new PlayerBean();
+				p.setPlayerId(rs.getString(1));
+				System.out.println(rs.getObject(1));
+				System.out.println(rs.getRow());
+				System.out.println(rs.getMetaData());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(p);
 	}
 }
