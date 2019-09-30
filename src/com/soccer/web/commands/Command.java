@@ -44,7 +44,7 @@ public class Command implements Order{
 			  break;
 		  case "fail":
 			  view = String.format(Constants
-					  .SINGLE_PATH,page);
+					  .FACADE_PATH,page);
 			  break;
 		  case "index":
 			  view = "index.jsp"; 
