@@ -107,7 +107,7 @@ public class PlayerDaoImpl implements PlayerDao{
 	public PlayerBean selectPlayerIdSolar(PlayerBean param) {
 		PlayerBean p = new PlayerBean();
 		String result = "";
-		System.out.println("만세");
+		System.out.println("만세 로그인");
 		try {		
 			PreparedStatement stmt = DatabaseFactory
 					.createDatabase("oracle")
@@ -116,6 +116,8 @@ public class PlayerDaoImpl implements PlayerDao{
 					.findPlayerIdSolar);
 			stmt.setString(1, param.getPlayerId());
 			stmt.setString(2, param.getSolar());
+			System.out.println(param.getPlayerId());
+			System.out.println(param.getSolar());
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				p = new PlayerBean();
@@ -140,5 +142,27 @@ public class PlayerDaoImpl implements PlayerDao{
 		}
 		System.out.println("db 값 = "+ result);
 		return p;
+	}
+	@Override
+	public boolean insertPlayer(PlayerBean param) {
+		System.out.println("만세 조인");
+		boolean result = false;
+		System.out.println(param.getPlayerId());
+		System.out.println(param.getSolar());
+		try {		
+			PreparedStatement stmt = DatabaseFactory
+					.createDatabase("oracle")
+					.getConnection()
+					.prepareStatement(SqlList
+					.insertPlayer);
+			stmt.setString(1, param.getPlayerId());
+			stmt.setString(2, param.getSolar());
+			result = (stmt.executeUpdate() == 1) ? true : false;
+		}
+		
+	    catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

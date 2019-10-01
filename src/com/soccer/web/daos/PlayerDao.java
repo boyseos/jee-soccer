@@ -15,4 +15,5 @@ public interface PlayerDao {
 	public List<PlayerBean> selectTeamPositions(PlayerBean param);
 	public List<PlayerBean> selectTeamHeightName(PlayerBean param);
 	public PlayerBean selectPlayerIdSolar(PlayerBean param);
+	public boolean insertPlayer(PlayerBean param);
 }

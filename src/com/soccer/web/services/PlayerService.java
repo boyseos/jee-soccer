@@ -14,6 +14,6 @@ public interface PlayerService {
 	//public List<PlayerBean> find
 	public PlayerBean findPlayerIdSolar(PlayerBean param);
 	public PlayerBean setPlayer(HttpServletRequest request);
-	
+	public boolean joinPlayer(PlayerBean param);
 	public void setPlayerAttribute(PlayerBean player, int i);
 }

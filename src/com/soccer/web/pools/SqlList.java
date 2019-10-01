@@ -22,7 +22,11 @@ public class SqlList {
 			,findPlayerIdSolar = "SELECT *\n" + 
 					"FROM PLAYER\n" + 
 					"WHERE PLAYER_ID LIKE ?\n" + 
-					"	AND SOLAR LIKE ?\n";
+					"	AND SOLAR LIKE ?\n"
+			,insertPlayer = "INSERT INTO PLAYER (PLAYER_ID, SOLAR, TEAM_ID, PLAYER_NAME)\n" + 
+					"VALUES (?,?,'K03','바보')";
+				
+				
 			
 			
 }

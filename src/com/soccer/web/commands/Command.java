@@ -32,11 +32,11 @@ public class Command implements Order{
 		  
 		  case "login":
 			  view = String.format(Constants
-					  .FACADE_PATH, page);
+					  .FACADE_PATH, "main");
 			  break;
 		  case "home":
 			  view = String.format(Constants
-					  .FACADE_PATH, page);
+					  .DOUBLE_PATH, domain,"main");
 			  break;
 		  case "join":
 			  view = String.format(Constants
@@ -52,6 +52,7 @@ public class Command implements Order{
 		  default:
 			  view = String.format(Constants
 					  .DOUBLE_PATH,domain,page);
+			  
 			  break;
 		}
 	}

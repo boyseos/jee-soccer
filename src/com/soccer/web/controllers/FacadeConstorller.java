@@ -27,11 +27,16 @@ public class FacadeConstorller extends HttpServlet {
 					((r.toString().equals("CTX")) ? "" 
 							: "/resources/"+r.toString().toLowerCase()));
 		}
+		System.out.println("설정전 " + request.getParameter("page"));
+		request.setAttribute("page",
+				(request.getParameter("page")==null)
+				? "login" : request.getParameter("page"));
+		System.out.println("설정후 " + request.getParameter("page"));
 		request.getRequestDispatcher
 			(String.format(Constants.DOUBLE_PATH,
 					request.getServletPath().substring(1,
 							request.getServletPath().indexOf("."))
-								,"login"))
+								,"main"))
 			.forward(request, response);
 	}
 }

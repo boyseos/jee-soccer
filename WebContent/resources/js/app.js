@@ -1,17 +1,16 @@
 var app = (()=>{
 	return {
 		init : (ctx)=>{
-			playerService.login();
-			$('#a_join').click(()=>{
-				alert('회에원가아이입');
-				location.assign(ctx+'/player.do?page=join');
-			});
+			playerService.login(ctx);
+			playerService.join(ctx);			
+			playerService.move_join(ctx);
 			$('#back').click(()=>{
 				alert('집으로 가라...!!!');
-				location.assign(ctx+'/player.do?page=login');
+				location.assign(ctx+'/facade.do?page=login');
 			});
 			$('#sql_querry_form').submit(()=>{
 			});
+			
 		}
 	};
 })();
@@ -33,17 +32,35 @@ var player = (()=>{
 	};
 })();
 
+
 var playerService = (()=>{
 	return {
-		login: ()=>{
+		login: (ctx)=>{
 			$('#login_form_button').click(()=>{
-				if($('#username').val()==='' || $('#userpass').val()===''){
-					alert('입력한 아이디 값:'+$('#username').val()+'입력한 비번 값  : ' + $('#userpass').val() +'값없음');	
+				if($('#login_username').val()==='' || $('#login_userpass').val()===''){
+					alert('입력한 아이디 값:'+$('#login_username').val()+'입력한 비번 값  : ' + $('#login_userpass').val() +'값없음');	
 				}else{
-					alert('입력한 아이디 값:'+$('#username').val()+'입력한 비번 값  : ' + $('#userpass').val() + '값있음');
-					$('#login_form').attr('action', '/jee-soccer/player.do');
+					alert('입력한 아이디 값:'+$('#login_username').val()+'입력한 비번 값  : ' + $('#login_userpass').val() + '값있음');
+					$('#login_form').attr('action', ctx+'/player.do');
 					$('#login_form').submit();
 				}
+			});
+		},
+		join: (ctx)=>{
+			$('#join_form_button').click(()=>{
+				if($('#join_username').val()==='' || $('#join_userpass').val()===''){
+					alert('입력한 아이디 값:'+$('#join_username').val()+'입력한 비번 값  : ' + $('#join_userpass').val() +'값없음');	
+				}else{
+					alert('입력한 아이디 값:'+$('#join_username').val()+'입력한 비번 값  : ' + $('#join_userpass').val() + '값있음');
+					$('#join_form').attr('action', ctx+'/player.do');
+					$('#join_form').submit();
+				}
+			});
+		},
+		move_join : (ctx)=>{
+			$('#a_join').click(()=>{
+				alert('회에원가아이입');
+				location.assign(ctx+'/facade.do?page=join');
 			});
 		}
 	};

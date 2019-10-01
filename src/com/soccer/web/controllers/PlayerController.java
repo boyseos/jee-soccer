@@ -1,5 +1,6 @@
 package com.soccer.web.controllers;
 
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soccer.web.commands.Receiver;
 import com.soccer.web.commands.Sender;
-import com.soccer.web.domains.PlayerBean;
+import com.soccer.web.enums.Actions;
 
 @WebServlet("/player.do")
 public class PlayerController extends HttpServlet {
@@ -19,6 +20,12 @@ public class PlayerController extends HttpServlet {
 			throws ServletException, IOException {
 		Receiver.init(request);
 		Receiver.cmd.execute();
+//		switch (Actions.valueOf(request
+//				.getParameter("action").toUpperCase())) {
+//		case CREATE : request.setAttribute("page", "login"); break;
+//		default:
+//			break;
+//		}
 		Sender.forward(response);
 	}
 	
