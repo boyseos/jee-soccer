@@ -18,7 +18,7 @@
 			<div>weight : <input class="join_tab" type="text" name="weight"/></div>
 			<div id="join_button">
 				<input id="join_form_button" type="button" value="조인전송" />
-				<input type="hidden" name="page" value="index" />	
+				<input type="hidden" name="page" value="join" />	
 				<input type="hidden" name="action" value="create" />		
 			</div>
 			<div></div>

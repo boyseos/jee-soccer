@@ -40,7 +40,9 @@ public class Command implements Order{
 			  break;
 		  case "join":
 			  view = String.format(Constants
-					  .FACADE_PATH, page);
+					  .FACADE_PATH, "main");
+			  request.setAttribute("page", "login");
+			  request.setAttribute("action",request.getServletContext()+"/facade.do");
 			  break;
 		  case "fail":
 			  view = String.format(Constants
