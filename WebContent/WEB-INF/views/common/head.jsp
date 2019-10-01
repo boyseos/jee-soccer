@@ -7,6 +7,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="${js}/app.js"></script>
 	<link rel="stylesheet" type="text/css" href="${css}/style.css" ></link>
+	<div>1</div>
+	<div>
+	<img id="soccer_intro" src="${img}/Soccer_Intro.jpg" alt="" />
+	</div>
+	<div>3</div>
+	<div>4</div>
 </head>
 <body>
-<div class="wrapper" style="width: 100%;height: 100%" >

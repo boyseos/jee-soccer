@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
     
 <jsp:include page="../common/head.jsp"/>
-
+<div class="wrapper" style="width: 100%;height: 100%" >
+<div></div>
+<div></div>
+<div></div>
 	<h2>${player.playerName} 선수</h2>
 	<form id="form" action="<%=request.getContextPath()%>/player.do">
 	문제번호 : <input type="number" name="page">

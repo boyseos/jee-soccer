@@ -16,5 +16,3 @@ public class Test {
 		System.out.println(k);	
 	}
 }
-
-action="${ctx}/player.do"
