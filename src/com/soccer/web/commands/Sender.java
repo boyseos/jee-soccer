@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 public class Sender {
 	public static void forward(HttpServletResponse response) {
 		try {
-			System.out.println("센더 "
-		+ Receiver.cmd.getPage()+"\n"+Receiver.cmd.getView()+"\n"
+			System.out.println("센더 페이지"
+		+ Receiver.cmd.getPage()+"\n센더 뷰"+Receiver.cmd.getView()+"\n센더 qr"
 		+ Receiver.cmd.request.getAttribute("qr"));
 			
 			Receiver.cmd.getRequest()

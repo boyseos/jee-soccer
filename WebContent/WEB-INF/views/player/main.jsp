@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <jsp:include page="../common/head.jsp"/>
 	<div>
+	
 		<c:choose>
 			<c:when test="${page eq 'select_question'}">
 				<jsp:include page="select_question.jsp"/>
@@ -27,4 +28,3 @@
 	페이지는 ${page} 이다. qr은 ${qr} 이다.</div>
 	<div>9</div>
 <jsp:include page="../common/foot.jsp"/>
-

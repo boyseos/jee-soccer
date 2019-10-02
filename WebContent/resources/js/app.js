@@ -5,6 +5,7 @@ var app = (()=>{
 			playerService.join(ctx);			
 			playerService.move_join(ctx);
 			playerService.sql02(ctx);
+			playerService.move_btn(ctx);
 			$('#back').click(()=>{
 				alert('집으로 가라...!!!');
 				location.assign(ctx+'/facade.do?page=login');
@@ -70,6 +71,12 @@ var playerService = (()=>{
 			$('#a_join').click(()=>{
 				alert('회에원가아이입');
 				location.assign(ctx+'/facade.do?page=join');
+			});
+		},
+		move_btn : (page)=>{
+			$('#'+page+'_btn').click(()=>{
+				alert(btn+'으로 가자');
+				location.assign('/jee-soccer/facade.do?page='+page);
 			});
 		}
 	};

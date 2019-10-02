@@ -7,9 +7,8 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BasicService s = new BasicServiceImpl();
 		String k = "asdf";
-		if(s.isNum(k)) {
+		if(BasicServiceImpl.instance().isNum(k)) {
 			Integer.parseInt(k);		
 			}
 		Integer.parseInt(k);

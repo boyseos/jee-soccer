@@ -3,6 +3,7 @@ package com.soccer.web.commands;
 import javax.servlet.http.HttpServletRequest;
 
 import com.soccer.web.pools.Constants;
+import com.soccer.web.serviceimpls.BasicServiceImpl;
 
 import lombok.Data;
 @Data
@@ -21,7 +22,11 @@ public class Command implements Order{
 	}
 
 	 public void setPage() {
-		 page = request.getParameter("page"); 
+		 page = request.getParameter("page");
+		 System.out.println("페이지 전환전 " + page);
+		 page = BasicServiceImpl.instance().isNum(page) ?
+				  (String.format("Sql_%02d", Integer.parseInt(page))) : page;
+		System.out.println("페이지 전환후 " + page);
 	}
 	 
 	 public void setDomain() {
@@ -34,7 +39,10 @@ public class Command implements Order{
 	}
 	  
 	  public void setView(String page) {
-		  this.page = page;
+		  //this.page = page;
+		  page = BasicServiceImpl.instance().isNum(page) ?
+				  (String.format("Sql_%02d", Integer.parseInt(page))) : page;
+		  request.setAttribute("page", this.page);
 		  switch (page) {
 		  
 		  case "login":
@@ -69,8 +77,7 @@ public class Command implements Order{
 			  break;
 		  default:
 			  view = String.format(Constants
-					  .DOUBLE_PATH,domain,page);
-			  
+					  .DOUBLE_PATH,domain,"main");	  
 			  break;
 		}
 	}
