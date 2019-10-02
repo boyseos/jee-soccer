@@ -1,26 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Sql02</title>
-<script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+    <c:choose>
+		<c:when test="${qr eq 'question'}">
+			<input id="sql02_button" type="button" value="보내자" >
+	<!-- 		<form id="sql02_form">
+				
+				<input type="hidden" name="action" value="sql">
+				<input type="hidden" name="page" value="Sql_02">
+				<input type="hidden" name="qr" value="result">			
+				포지션<input type="text" name="position" > 
+			</form>-->
+		</c:when>
+		
+		<c:when test="${qr eq 'result'}">
+			포지션은${sql01Player.position} ${sql02Player.position} ${sql03Player.position} ${sql04Player.position} ${sql05Player.position}입니다.
+			포지션은${sql00Player.position} ${sql01Player.position} ${sql02Player.position} ${sql03Player.position} ${sql04Player.position} ${sql05Player.position}입니다.
+			<a id="back_" href="#">돌아가기</a>
+		</c:when>
+	</c:choose>
 
-	<h2>${player.playerName} 선수</h2>
-	<form id="form" action="<%=request.getContextPath()%>/player.do">
-	문제번호 : <input type="hidden" name="page" value="02">
-	<input type="submit" value="보내자" >
-	<input type="hidden" name="action" value="sql">
-	팀아이디<input type="text" name="teamId" >
-	포지션<input type="text" name="position" >
-	선수키<input type="text" name="height" >
-	선수이름<input type="text" name="playerName" >
-	</form>
-
-<!-- 답 -->
-포지션은${sql01.position} ${sql02.position} ${sql03.position} ${sql04.position} ${sql05.position}입니다.
-</body>
-</html>

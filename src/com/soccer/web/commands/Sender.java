@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 public class Sender {
 	public static void forward(HttpServletResponse response) {
 		try {
+			System.out.println("센더 "
+		+ Receiver.cmd.getPage()+"\n"+Receiver.cmd.getView()+"\n"
+		+ Receiver.cmd.request.getAttribute("qr"));
+			
 			Receiver.cmd.getRequest()
 				.getRequestDispatcher(Receiver.cmd.getView())
 					.forward(Receiver.cmd.getRequest(), response);

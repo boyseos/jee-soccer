@@ -33,9 +33,10 @@ public class PlayerServiceImpl implements PlayerService{
 	}
 	
 	public void setPlayerAttribute(PlayerBean player, int i) {
-		System.out.println("SqlCommand : "+ player);
 		Receiver.cmd.getRequest().setAttribute // 플레이어쪽에서 컨트롤러쪽의 정보를 가지고왔다. 상관없겠지?
 		(String.format("sql%02dPlayer",i ),player);
+		System.out.println(Receiver.cmd.getRequest()
+				.getAttribute(String.format("sql%02dPlayer",i)));
 	}
 	
 	public PlayerBean findPlayerIdSolar(PlayerBean param) {

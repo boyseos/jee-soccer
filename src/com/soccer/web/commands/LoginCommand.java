@@ -26,6 +26,5 @@ public class LoginCommand extends MoveCommand{
 			System.out.println("로그인 성공");
 			request.setAttribute("player",p);
 		}
-		
 	}
 }

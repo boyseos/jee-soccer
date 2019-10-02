@@ -8,7 +8,7 @@
 				</div>
 				<div id="login_button">
 					<input id="login_form_button" type="button" value="로그인전송" />
-					<input type="hidden" name="page" value="home" />	
+					<input type="hidden" name="page" value="select_question" />	
 					<input type="hidden" name="action" value="login" />	
 				</div>
 				<div class="login_columns">

@@ -4,6 +4,7 @@ var app = (()=>{
 			playerService.login(ctx);
 			playerService.join(ctx);			
 			playerService.move_join(ctx);
+			playerService.sql02(ctx);
 			$('#back').click(()=>{
 				alert('집으로 가라...!!!');
 				location.assign(ctx+'/facade.do?page=login');
@@ -42,6 +43,7 @@ var playerService = (()=>{
 				}else{
 					alert('입력한 아이디 값:'+$('#login_username').val()+'입력한 비번 값  : ' + $('#login_userpass').val() + '값있음');
 					$('#login_form').attr('action', ctx+'/player.do');
+					$('#login_form').attr('method','get');
 					$('#login_form').submit();
 				}
 			});
@@ -53,8 +55,15 @@ var playerService = (()=>{
 				}else{
 					alert('입력한 아이디 값:'+$('#join_username').val()+'입력한 비번 값  : ' + $('#join_userpass').val() + '값있음');
 					$('#join_form').attr('action', ctx+'/player.do');
+					$('#join_form').attr('method','POST');
 					$('#join_form').submit();
 				}
+			});
+		},
+		sql02: (ctx)=>{
+			$('#sql02_button').click(()=>{
+				alert('sadf');
+				location.assign(ctx+'/player.do?action=sql&page=Sql_02&qr=result');
 			});
 		},
 		move_join : (ctx)=>{
