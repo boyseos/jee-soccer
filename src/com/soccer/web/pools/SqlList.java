@@ -2,8 +2,12 @@ package com.soccer.web.pools;
 
 public class SqlList {
 
-	public static String 
-			SqlQuestion02 = "SELECT DISTINCT P.POSITION\r\n" + 
+	public static String
+			SqlQuestion01 = "SELECT DISTINCT P.POSITION\r\n" + 
+			"FROM PLAYER P\r\n" + 
+			"ORDER BY 1 DESC"
+	
+			,SqlQuestion02 = "SELECT DISTINCT P.POSITION\r\n" + 
 			"FROM PLAYER P\r\n" + 
 			"ORDER BY 1 DESC"
 		

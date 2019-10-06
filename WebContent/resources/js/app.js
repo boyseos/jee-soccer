@@ -4,12 +4,20 @@ var app = (()=>{
 			playerService.login(ctx);
 			playerService.join(ctx);			
 			playerService.move_join(ctx);
-			playerService.sql02(ctx);
 			$('#back').click(()=>{
 				alert('집으로 가라...!!!');
 				location.assign(ctx+'/facade.do?page=login');
 			});
-			$('#sql_querry_form').submit(()=>{
+			$('#back_select').click(()=>{
+				alert('다시골라');
+				location.assign(ctx+'/player.do?page=select_question');
+			});
+			$('#sql_04_form').submit(()=>{
+				alert('4번을 고르다니');
+			});
+			$('#sql_02_button').click(()=>{
+				alert('2번을 골랐군.');
+				location.assign(ctx+'/player.do?action=search&page=02&qr=result');
 			});
 			
 		}
@@ -58,12 +66,6 @@ var playerService = (()=>{
 					$('#join_form').attr('method','POST');
 					$('#join_form').submit();
 				}
-			});
-		},
-		SQL: (ctx)=>{
-			$('#sql_form').click(()=>{
-				$('#join_form').attr('action', ctx+'/player.do');
-				$('#join_form').submit();
 			});
 		},
 		move_join : (ctx)=>{

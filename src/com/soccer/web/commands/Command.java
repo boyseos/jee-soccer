@@ -17,17 +17,15 @@ public class Command implements Order{
 		setDomain();
 		setView(page);
 		setQr();
-		request.setAttribute("page",page);
-		
 	}
 
 	 public void setPage() {
-		 page = (request.getParameter("page")==null)
+		page = (request.getParameter("page")==null)
 				 ? "login" : request.getParameter("page");
-		 request.setAttribute("page", page);
-		 System.out.println("페이지 전환전 " + page);
-		 page = BasicServiceImpl.instance().isNum(page) ?
+		System.out.println("페이지 전환전 " + page);
+		page = BasicServiceImpl.instance().isNum(page) ?
 				  (String.format("Sql_%02d", Integer.parseInt(page))) : page;
+		request.setAttribute("page", page);
 		System.out.println("페이지 전환후 " + page);
 	}
 	 

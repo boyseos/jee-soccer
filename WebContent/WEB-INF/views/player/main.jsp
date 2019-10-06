@@ -25,6 +25,7 @@
 	<div>6</div>
 	<div>7</div>
 	<div><h1>기본 mainset</h1>
-	페이지는 ${page} 이다. qr은 ${qr} 이다.</div>
+	페이지는 ${page} 이다. qr은 ${qr} 이다.<br>
+	${question_num}번 문제이다. </div>
 	<div>9</div>
 <jsp:include page="../common/foot.jsp"/>
