@@ -20,12 +20,6 @@ public class PlayerController extends HttpServlet {
 			throws ServletException, IOException {
 		Receiver.init(request);
 		Receiver.cmd.execute();
-//		switch (Actions.valueOf(request
-//				.getParameter("action").toUpperCase())) {
-//		case CREATE : request.setAttribute("page", "login"); break;
-//		default:
-//			break;
-//		}
 		Sender.forward(response);
 	}
 	

@@ -16,13 +16,15 @@ public class Command implements Order{
 		setPage();
 		setDomain();
 		setView(page);
-		request.setAttribute("page",request.getParameter("page"));
-		request.setAttribute("qr", (request.getParameter("qr")==null) ?
-				"question" : "result");
+		setQr();
+		request.setAttribute("page",page);
+		
 	}
 
 	 public void setPage() {
-		 page = request.getParameter("page");
+		 page = (request.getParameter("page")==null)
+				 ? "login" : request.getParameter("page");
+		 request.setAttribute("page", page);
 		 System.out.println("페이지 전환전 " + page);
 		 page = BasicServiceImpl.instance().isNum(page) ?
 				  (String.format("Sql_%02d", Integer.parseInt(page))) : page;
@@ -37,43 +39,15 @@ public class Command implements Order{
 	 public void setContext() {
 		 context = request.getServletContext() + request.getServletPath();
 	}
-	  
-	  public void setView(String page) {
-		  //this.page = page;
-		  page = BasicServiceImpl.instance().isNum(page) ?
-				  (String.format("Sql_%02d", Integer.parseInt(page))) : page;
-		  request.setAttribute("page", this.page);
+
+	 public void setQr() {
+		 request.setAttribute("qr", (request.getParameter("qr")==null) 
+				 ?	"question" : "result");
+	}
+	 public void setView(String page) {
 		  switch (page) {
-		  
-		  case "login":
-			  view = String.format(Constants
-					  .FACADE_PATH, "main");
-			  break;
-		  case "home":
-			  view = String.format(Constants
-					  .DOUBLE_PATH, domain,"main");
-			  break;
-		  case "join":
-			  view = String.format(Constants
-					  .FACADE_PATH, "main");
-			  request.setAttribute("page", "login");
-			  request.setAttribute("action",request.getServletContext()+"/facade.do");
-			  break;
-		  case "fail":
-			  view = String.format(Constants
-					  .FACADE_PATH,page);
-			  break;
-		  case "Sql_02":
-			  view = String.format(Constants
-					  .DOUBLE_PATH, domain,"main");
-			  //request.setAttribute("action",request.getServletContext()+"/player.do");
-			  break;
 		  case "index":
 			  view = "index.jsp"; 
-			  break;
-		  case "select_question":
-			  view = String.format(Constants
-					  .DOUBLE_PATH, domain,"main");
 			  break;
 		  default:
 			  view = String.format(Constants

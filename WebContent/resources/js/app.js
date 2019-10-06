@@ -5,7 +5,6 @@ var app = (()=>{
 			playerService.join(ctx);			
 			playerService.move_join(ctx);
 			playerService.sql02(ctx);
-			playerService.move_btn(ctx);
 			$('#back').click(()=>{
 				alert('집으로 가라...!!!');
 				location.assign(ctx+'/facade.do?page=login');
@@ -44,7 +43,7 @@ var playerService = (()=>{
 				}else{
 					alert('입력한 아이디 값:'+$('#login_username').val()+'입력한 비번 값  : ' + $('#login_userpass').val() + '값있음');
 					$('#login_form').attr('action', ctx+'/player.do');
-					$('#login_form').attr('method','get');
+					$('#login_form').attr('method','POST');
 					$('#login_form').submit();
 				}
 			});
@@ -61,22 +60,16 @@ var playerService = (()=>{
 				}
 			});
 		},
-		sql02: (ctx)=>{
-			$('#sql02_button').click(()=>{
-				alert('sadf');
-				location.assign(ctx+'/player.do?action=sql&page=Sql_02&qr=result');
+		SQL: (ctx)=>{
+			$('#sql_form').click(()=>{
+				$('#join_form').attr('action', ctx+'/player.do');
+				$('#join_form').submit();
 			});
 		},
 		move_join : (ctx)=>{
 			$('#a_join').click(()=>{
 				alert('회에원가아이입');
 				location.assign(ctx+'/facade.do?page=join');
-			});
-		},
-		move_btn : (page)=>{
-			$('#'+page+'_btn').click(()=>{
-				alert(btn+'으로 가자');
-				location.assign('/jee-soccer/facade.do?page='+page);
 			});
 		}
 	};

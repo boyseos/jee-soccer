@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.soccer.web.commands.Receiver;
+import com.soccer.web.commands.Sender;
 import com.soccer.web.pools.Constants;
 
 @WebServlet("/facade.do")
@@ -27,17 +29,10 @@ public class FacadeConstorller extends HttpServlet {
 					((r.toString().equals("CTX")) ? "" 
 							: "/resources/"+r.toString().toLowerCase()));
 		}
-		System.out.println("설정전 " + request.getParameter("page"));
-		request.setAttribute("page",
-				(request.getParameter("page")==null)
-				? "login" : request.getParameter("page"));
-		System.out.println("설정후 " + request.getParameter("page"));
-		request.getRequestDispatcher
-			(String.format(Constants.DOUBLE_PATH,
-					request.getServletPath().substring(1,
-							request.getServletPath().indexOf("."))
-								,"main"))
-			.forward(request, response);
+		
+		Receiver.init(request);
+		Receiver.cmd.execute();
+		Sender.forward(response);
 	}
 }
 

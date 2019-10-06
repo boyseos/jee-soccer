@@ -9,10 +9,10 @@
 <body>
 	select_question
 	<h2>${player.playerName} 선수</h2>
-	<form id="form" action="<%=request.getContextPath()%>/player.do">
+	<form id="sql_form">
 		문제번호 : <input type="number" name="page">
 		<input type="submit" value="보내자" >
-		<input type="hidden" name="action" value="sql">
+		<input type="hidden" name="action" value="search">
 	</form>
 </body>
 </html>

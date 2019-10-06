@@ -21,7 +21,7 @@ public class LoginCommand extends MoveCommand{
 		if(null ==  p.getPlayerId()){
 			System.out.println("로그인 실패");
 			request.setAttribute("loginfail",request.getParameter("playerid"));
-			setView("fail");
+			setPage("fail");
 		}else {			
 			System.out.println("로그인 성공");
 			request.setAttribute("player",p);

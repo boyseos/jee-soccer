@@ -5,7 +5,7 @@
 	<form id="form" action="<%=request.getContextPath()%>/player.do">
 	문제번호 : <input type="hidden" name="page" value="05">
 	<input type="submit" value="보내자" >
-	<input type="hidden" name="action" value="sql">
+	<input type="hidden" name="action" value="search">
 	팀아이디<input type="text" name="teamId" >
 	포지션<input type="text" name="position" >
 	선수키<input type="text" name="height" >
